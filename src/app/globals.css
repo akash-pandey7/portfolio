@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: `dark:` utilities respond to a `.dark` class on <html>,
+   set by the inline theme script in layout.tsx (no flash of the wrong theme). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Light values live on :root, dark overrides on .dark.
+   These are exposed to Tailwind as utilities (bg-*, text-*, border-*) via the
+   @theme inline block below, so `bg-background`, `text-muted`, etc. all work
+   and automatically flip with the theme.
+--------------------------------------------------------------------------- */
+:root {
+  --background: #fafaf9;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --border: rgba(9, 9, 11, 0.09);
+  --border-strong: rgba(9, 9, 11, 0.16);
+  --foreground: #18181b;
+  --muted: #52525b;
+  --subtle: #71717a;
+  --accent: #6d28d9; /* violet-700 — enough contrast on light backgrounds */
+  --accent-2: #0e7490; /* cyan-700 */
+  --accent-contrast: #ffffff;
+  --accent-soft: rgba(109, 40, 217, 0.09);
+  --ring: rgba(109, 40, 217, 0.45);
+  --grid-line: rgba(9, 9, 11, 0.045);
+}
+
+.dark {
+  --background: #09090b;
+  --surface: #101013;
+  --card: rgba(255, 255, 255, 0.024);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --foreground: #ededf0;
+  --muted: #a1a1aa;
+  --subtle: #8a8a94;
+  --accent: #a78bfa; /* violet-400 — pops on dark */
+  --accent-2: #22d3ee; /* cyan-400 */
+  --accent-contrast: #0b0410;
+  --accent-soft: rgba(167, 139, 250, 0.13);
+  --ring: rgba(167, 139, 250, 0.5);
+  --grid-line: rgba(255, 255, 255, 0.04);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Base styles
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* offset for the sticky nav on anchor jumps */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities & effects
+--------------------------------------------------------------------------- */
+@layer utilities {
+  /* Gradient text used for the accent word in headings. */
+  .text-gradient {
+    background-image: linear-gradient(
+      110deg,
+      var(--accent) 0%,
+      var(--accent-2) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* keeps descenders (g, y, p) from being clipped */
+    padding-bottom: 0.06em;
+  }
+
+  /* Faint blueprint grid, used behind the hero. */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        var(--grid-line) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Radial mask to fade an element out toward the edges. */
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(
+      ellipse 60% 60% at 50% 40%,
+      #000 40%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 60% 60% at 50% 40%,
+      #000 40%,
+      transparent 100%
+    );
+  }
+
+  /* Thin hairline divider that respects the theme. */
+  .hairline {
+    border-color: var(--border);
+  }
+}
+
+/* Scroll-reveal: elements carry `.reveal`; the Reveal component adds
+   `.is-visible` when they enter the viewport. The hidden starting state is
+   gated behind `.js-reveal` (added to <html> by the inline script only when
+   JS + IntersectionObserver are available) so the site is fully visible with
+   JS disabled or on unsupported browsers. */
+.reveal {
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .js-reveal .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-22px) translateX(10px);
+  }
+}
