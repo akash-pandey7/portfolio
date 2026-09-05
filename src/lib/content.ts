@@ -74,7 +74,7 @@ export const about = {
   // Small stat tiles shown beside the bio. Keep to 3–4.
   facts: [
     { value: "2027", label: "B.Tech CS (AI), expected" },
-    { value: "3", label: "End-to-end projects shipped" },
+    { value: "4", label: "End-to-end projects shipped" },
     { value: "6", label: "Certifications & achievements" },
     { value: "#67", label: "AI-Deate case comp, IIT Delhi" },
   ],
@@ -134,7 +134,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "TensorVeil — Synthetic Data Engine",
-    period: "Jan 2026 – Present",
+    period: "Jan 2026 – Sep 2026",
     blurb:
       "A CTGAN-based generative AI system that synthesizes privacy-safe training data while preserving the source's full statistical fidelity. Production-grade pipeline for ingestion, automated cleaning, imputation, and hyperparameter optimization, with an auditable validation layer — KS test, Total Variation Distance, and ML efficacy via train-synthetic-test-real. Shipped as a full-stack Streamlit app backed by Supabase (row-level security), with CI/CD via GitHub Actions and unit tests.",
     metric: "Privacy-safe synthetic data · full statistical fidelity",
@@ -144,6 +144,14 @@ export const projects: Project[] = [
       { label: "Code", href: "https://github.com/akash-pandey7/TensorVeil" },
     ],
     featured: true,
+  },
+  {
+    title: "Freight Rate Prediction Pipeline",
+    blurb: 
+      "End-to-end ML pipeline predicting truckload freight pricing from 48K historical loads. Diagnosed a hidden data-entry bug (sign-flipped weight values on 0.6% of rows), ran a leakage check to justify excluding two weak market-signal features, and compared RandomForest against HistGradientBoosting on a time-based holdout — mirroring the real train-to-future prediction gap — before selecting the stronger model.",
+    metric: "24% lower MAE than baseline, R² 0.83",
+    tags: ["Python", "scikit-learn", "Pandas", "Regression", "Feature Engineering", "Data Cleaning", "Time-Series Validation"],
+    links: [{ label: "Code", href: "https://github.com/akash-pandey7/freight-rate-prediction" }],
   },
   {
     title: "Olist E-Commerce Sales & Delivery Analysis",
