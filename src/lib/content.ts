@@ -152,6 +152,7 @@ export const projects: Project[] = [
     metric: "24% lower MAE than baseline, R² 0.83",
     tags: ["Python", "scikit-learn", "Pandas", "Regression", "Feature Engineering", "Data Cleaning", "Time-Series Validation"],
     links: [{ label: "Code", href: "https://github.com/akash-pandey7/freight-rate-prediction" }],
+    featured: true,
   },
   {
     title: "Olist E-Commerce Sales & Delivery Analysis",
