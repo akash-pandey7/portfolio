@@ -140,7 +140,7 @@ export const projects: Project[] = [
     metric: "Privacy-safe synthetic data · full statistical fidelity",
     tags: ["CTGAN", "Python", "Streamlit", "Supabase", "GitHub Actions", "CI/CD"],
     links: [
-      { label: "Live demo", href: "#" },
+      { label: "Live demo", href: "https://tensorveil.streamlit.app/" },
       { label: "Code", href: "https://github.com/akash-pandey7/TensorVeil" },
     ],
     featured: true,
