@@ -1,5 +1,5 @@
 /* =============================================================================
- *  SITE CONTENT — edit everything about the portfolio here.
+ *  SITE CONTENT - edit everything about the portfolio here.
  *
  *  This is the single source of truth consumed by every section. It's plain
  *  data (no framework knowledge needed). Search for "TODO" to find the few
@@ -13,7 +13,7 @@ export const profile = {
   role: "Machine Learning Engineer",
   // The first thing visitors read. Punchy, and covers ML + data + analytics.
   tagline:
-    "I build production-grade generative AI systems, end-to-end ML pipelines, and BI/analytics solutions — taking ideas from research through to deployed, tested products.",
+    "I build production-grade generative AI systems, end-to-end ML pipelines, and BI/analytics solutions - taking ideas from research through to deployed, tested products.",
   location: "New Delhi, India",
   email: "akashpandey98717@gmail.com",
   phone: "+91 83687 06164",
@@ -37,9 +37,9 @@ export const socials = [
 export const site = {
   // TODO: your deployed URL, no trailing slash (used for absolute OG/meta URLs).
   url: "https://akash-pandey.vercel.app",
-  title: `${profile.name} — ${profile.role}`,
+  title: `${profile.name} - ${profile.role}`,
   description:
-    "Akash Pandey — final-year CS (AI) student building production-grade generative AI, ML pipelines, and BI/analytics. CTGAN synthetic data, SQL + Power BI, and cloud AI.",
+    "Akash Pandey - final-year CS (AI) student building production-grade generative AI, ML pipelines, and BI/analytics. CTGAN synthetic data, SQL + Power BI, and cloud AI.",
   keywords: [
     "Akash Pandey",
     "Machine Learning Engineer",
@@ -68,8 +68,8 @@ export const navLinks = [
 export const about = {
   // Each string is a paragraph. Keep it to 2–3.
   paragraphs: [
-    "I'm Akash — a final-year B.Tech Computer Science (AI) student with a bias toward shipping. I independently built Tensor Veil, a CTGAN-based synthetic data engine, from research all the way to a deployed, tested full-stack app with CI/CD.",
-    "My work spans generative AI, production ML pipelines, and BI/analytics. I care about the parts that make ML trustworthy — data quality, validation you can audit, and reproducible pipelines — and I like backing decisions with data, whether that's KS-test validation of synthetic distributions or a Power BI dashboard over ~99K orders.",
+    "I'm Akash - a final-year B.Tech Computer Science (AI) student with a bias toward shipping. I independently built Tensor Veil, a CTGAN-based synthetic data engine, from research all the way to a deployed, tested full-stack app with CI/CD.",
+    "My work spans generative AI, production ML pipelines, and BI/analytics. I care about the parts that make ML trustworthy - data quality, validation you can audit, and reproducible pipelines - and I like backing decisions with data, whether that's KS-test validation of synthetic distributions or a Power BI dashboard over ~99K orders.",
   ],
   // Small stat tiles shown beside the bio. Keep to 3–4.
   facts: [
@@ -123,7 +123,7 @@ export type Project = {
   blurb: string;
   // Optional date range, shown as a small mono label on the card.
   period?: string;
-  // Headline outcome — shown prominently.
+  // Headline outcome - shown prominently.
   metric?: string;
   tags: string[];
   links: ProjectLink[];
@@ -133,10 +133,10 @@ export type Project = {
 // TODO: point the project links at your real repos / live app / dataset.
 export const projects: Project[] = [
   {
-    title: "TensorVeil — Synthetic Data Engine",
-    period: "Jan 2026 – Sep 2026",
+    title: "TensorVeil - Synthetic Data Engine",
+    period: "Jan 2026 - Sep 2026",
     blurb:
-      "A CTGAN-based generative AI system that synthesizes privacy-safe training data while preserving the source's full statistical fidelity. Production-grade pipeline for ingestion, automated cleaning, imputation, and hyperparameter optimization, with an auditable validation layer — KS test, Total Variation Distance, and ML efficacy via train-synthetic-test-real. Shipped as a full-stack Streamlit app backed by Supabase (row-level security), with CI/CD via GitHub Actions and unit tests.",
+      "A CTGAN-based generative AI system that synthesizes privacy-safe training data while preserving the source's full statistical fidelity. Production-grade pipeline for ingestion, automated cleaning, imputation, and hyperparameter optimization, with an auditable validation layer - KS test, Total Variation Distance, and ML efficacy via train-synthetic-test-real. Shipped as a full-stack Streamlit app backed by Supabase (row-level security), with CI/CD via GitHub Actions and unit tests.",
     metric: "Privacy-safe synthetic data · full statistical fidelity",
     tags: ["CTGAN", "Python", "Streamlit", "Supabase", "GitHub Actions", "CI/CD"],
     links: [
@@ -148,7 +148,7 @@ export const projects: Project[] = [
   {
     title: "Freight Rate Prediction Pipeline",
     blurb: 
-      "End-to-end ML pipeline predicting truckload freight pricing from 48K historical loads. Diagnosed a hidden data-entry bug (sign-flipped weight values on 0.6% of rows), ran a leakage check to justify excluding two weak market-signal features, and compared RandomForest against HistGradientBoosting on a time-based holdout — mirroring the real train-to-future prediction gap — before selecting the stronger model.",
+      "End-to-end ML pipeline predicting truckload freight pricing from 48K historical loads. Diagnosed a hidden data-entry bug (sign-flipped weight values on 0.6% of rows), ran a leakage check to justify excluding two weak market-signal features, and compared RandomForest against HistGradientBoosting on a time-based holdout - mirroring the real train-to-future prediction gap - before selecting the stronger model.",
     metric: "24% lower MAE than baseline, R² 0.83",
     tags: ["Python", "scikit-learn", "Pandas", "Regression", "Feature Engineering", "Data Cleaning", "Time-Series Validation"],
     links: [{ label: "Code", href: "https://github.com/akash-pandey7/freight-rate-prediction" }],
@@ -164,9 +164,9 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Top-Rated TMDB Movies — Cleaned Dataset",
+    title: "Top-Rated TMDB Movies - Cleaned Dataset",
     blurb:
-      "Exploratory data analysis on raw TMDB movie data to surface quality issues, inconsistencies, and missing patterns — then cleaned, deduplicated, and standardized the dataset and published it publicly on Kaggle for other practitioners to build on.",
+      "Exploratory data analysis on raw TMDB movie data to surface quality issues, inconsistencies, and missing patterns - then cleaned, deduplicated, and standardized the dataset and published it publicly on Kaggle for other practitioners to build on.",
     metric: "Cleaned & published on Kaggle",
     tags: ["Python", "Pandas", "EDA", "Data Cleaning"],
     links: [{ label: "View on Kaggle", href: "https://www.kaggle.com/datasets/akashp7/top-rated-tmdb-movies-cleaned" }],
@@ -193,7 +193,7 @@ export const certifications: Credential[] = [
     title: "OCI AI Foundations Associate",
     issuer: "Oracle",
     year: "2025",
-    detail: "Oracle Cloud Infrastructure AI certification — scored 85%.",
+    detail: "Oracle Cloud Infrastructure AI certification - scored 85%.",
   },
   {
     title: "Data Analytics with Python",
@@ -206,7 +206,7 @@ export const certifications: Credential[] = [
     detail: "Cloud AI / ML foundations.",
   },
   {
-    title: "AI-Deate — AI Case Competition",
+    title: "AI-Deate - AI Case Competition",
     issuer: "Business Club, IIT Delhi",
     detail: "Ranked #67 among participating teams.",
   },
